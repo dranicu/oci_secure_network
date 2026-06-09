@@ -1,0 +1,21 @@
+# Copy to terraform.tfvars and edit before running `terraform apply`.
+# (terraform.tfvars is auto-loaded; .tfvars.example is not.)
+
+# Required: compartment to deploy into.
+compartment_id = "ocid1.compartment.oc1..aaaaaaaaexamplereplace"
+
+# Required: tenancy home region (Identity -> Region Management -> Home Region).
+# This example doesn't create IAM resources, but the `security` module still
+# declares a home-region provider alias that must be wired up.
+home_region = "us-ashburn-1"
+
+# Single-host /32 of the workstation that will connect to the bastion.
+# Find yours with:  curl -s ifconfig.me
+operator_cidr = "203.0.113.10/32"
+
+# Public key the managed-SSH bastion session will authorise.
+ssh_public_key_path = "~/.ssh/id_rsa.pub"
+
+# Optional: OCID of an existing compute instance to demonstrate a managed-SSH
+# bastion session against. Leave commented to skip session creation.
+# target_resource_id = "ocid1.instance.oc1..aaaaaaaaexamplereplace"

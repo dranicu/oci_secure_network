@@ -1,0 +1,31 @@
+# Copy to terraform.tfvars and edit before running `terraform apply`.
+# (terraform.tfvars is auto-loaded; .tfvars.example is not.)
+
+# Required: compartment to deploy into.
+compartment_id = "ocid1.compartment.oc1..aaaaaaaaexamplereplace"
+
+# Required: tenancy home region (Identity -> Region Management -> Home Region).
+# IAM policies are created against this region even when workloads run
+# elsewhere. Example: "us-ashburn-1" for an IAD home tenancy.
+home_region = "us-ashburn-1"
+
+# Single-host /32 of the workstation that will connect to the bastion AND
+# reach the kube API endpoint through it.
+# Find yours with:  curl -s ifconfig.me
+operator_cidr = "203.0.113.10/32"
+
+# Public key the managed-SSH bastion session will authorise.
+ssh_public_key_path = "~/.ssh/id_rsa.pub"
+
+# Optional: OCID of an existing worker node (or any compute instance reachable
+# from the bastion subnet) to create a managed-SSH session against. Leave
+# commented to skip session creation.
+# target_resource_id = "ocid1.instance.oc1..aaaaaaaaexamplereplace"
+
+# Set to false if the operator group already has the IAM policies needed for
+# bastion + read-only OKE access. Default (true) creates the policies for you.
+create_iam_policies = true
+
+# Name of the existing IAM group the policies will grant access to. Must
+# already exist in your tenancy; the example only creates the policies.
+operator_group_name = "test-oke-operators"
