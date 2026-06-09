@@ -359,7 +359,7 @@ variable "bastion" {
 
   validation {
     condition     = var.bastion == null || alltrue([for c in var.bastion.client_cidr_block_allow_list : endswith(c, "/32")])
-    error_message = "bastion.client_cidr_block_allow_list may only contain single-host /32 CIDRs (e.g. 203.0.113.10/32). Wider ranges, and 0.0.0.0/0, are rejected."
+    error_message = "bastion.client_cidr_block_allow_list may only contain single-host /32 CIDRs (e.g. <your_ip_address>/32). Wider ranges, and 0.0.0.0/0, are rejected."
   }
 
   validation {

@@ -51,7 +51,7 @@ from the bastion) and have the Oracle Cloud Agent's Bastion plugin enabled.
 |----------|---------|---------|
 | `compartment_id` | — | Compartment OCID to deploy into. |
 | `home_region` | — | Tenancy home region (Identity → Region Management). IAM writes go here. |
-| `operator_cidr` | `203.0.113.10/32` | Single-host `/32` allowed to reach the bastion. |
+| `operator_cidr` | — | Single-host `/32` allowed to reach the bastion. Required. Get yours with `curl -s ifconfig.me`. |
 | `ssh_public_key_path` | `~/.ssh/id_rsa.pub` | Public key the bastion session will authorise. |
 | `target_resource_id` | `null` | OCID of an existing instance to create a session against; null skips the session. |
 

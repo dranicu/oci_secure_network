@@ -9,9 +9,13 @@ variable "home_region" {
 }
 
 variable "operator_cidr" {
-  description = "Single-host /32 CIDR of the operator workstation allowed to reach the bastion."
+  description = "Single-host /32 CIDR of the operator workstation allowed to reach the bastion. Find yours with: curl -s ifconfig.me"
   type        = string
-  default     = "203.0.113.10/32"
+
+  validation {
+    condition     = can(regex("^([0-9]{1,3}\\.){3}[0-9]{1,3}/32$", var.operator_cidr))
+    error_message = "operator_cidr must be a single-host IPv4 /32 CIDR (e.g. 198.51.100.10/32). Get yours with: curl -s ifconfig.me"
+  }
 }
 
 variable "ssh_public_key_path" {

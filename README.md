@@ -74,7 +74,7 @@ module "security" {
   bastion = {
     name                         = "test-env-bastion"
     target_subnet                = "private-app"
-    client_cidr_block_allow_list = ["203.0.113.10/32"]
+    client_cidr_block_allow_list = ["<your_ip_address>/32"]
   }
 }
 ```
@@ -97,13 +97,13 @@ module "security" {
     api_endpoint_visibility = "private"          # no public kube API
     service_lb_visibility   = "private"          # no internet-facing LBs
     lb_ingress_cidrs        = ["10.50.0.0/16"]   # corporate network only
-    operator_cidrs          = ["203.0.113.10/32"]
+    operator_cidrs          = ["<your_ip_address>/32"]
   }
 
   bastion = {
     name                         = "oke-prod-bastion"
     target_subnet                = "oke_bastion"
-    client_cidr_block_allow_list = ["203.0.113.10/32"]
+    client_cidr_block_allow_list = ["<your_ip_address>/32"]
   }
 }
 ```

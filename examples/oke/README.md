@@ -52,7 +52,7 @@ terraform apply -var target_resource_id=ocid1.instance.oc1..yyyyy
 |----------|---------|---------|
 | `compartment_id` | — | Compartment OCID to deploy into. |
 | `home_region` | — | Tenancy home region (Identity → Region Management). IAM writes go here. |
-| `operator_cidr` | `203.0.113.10/32` | Single-host `/32` for both the bastion allow-list and `oke.operator_cidrs`. |
+| `operator_cidr` | — | Single-host `/32` for both the bastion allow-list and `oke.operator_cidrs`. Required. Get yours with `curl -s ifconfig.me`. |
 | `ssh_public_key_path` | `~/.ssh/id_rsa.pub` | Public key the bastion session will authorise. |
 | `target_resource_id` | `null` | OCID of an existing worker to create a session against; null skips the session. |
 | `create_iam_policies` | `true` | Set to `false` if the operator group already has equivalent policies. |

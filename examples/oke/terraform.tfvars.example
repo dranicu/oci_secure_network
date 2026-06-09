@@ -12,7 +12,7 @@ home_region = "us-ashburn-1"
 # Single-host /32 of the workstation that will connect to the bastion AND
 # reach the kube API endpoint through it.
 # Find yours with:  curl -s ifconfig.me
-operator_cidr = "203.0.113.10/32"
+operator_cidr = "<your_ip_address>/32"
 
 # Public key the managed-SSH bastion session will authorise.
 ssh_public_key_path = "~/.ssh/id_rsa.pub"
